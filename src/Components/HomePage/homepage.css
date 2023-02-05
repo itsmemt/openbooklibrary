@@ -1,0 +1,27 @@
+.searchbox{
+    background-color: #dddddd;
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    border-bottom: 1px solid #000;
+}
+.searchbox:active,.searchbox:focus{
+    outline: 2px solid violet;
+    border-bottom:none;
+}
+.subject-section{
+    padding: 10px 20px;
+    border-right: 1px solid black;
+  }
+  .subject-section h3{
+    padding-bottom: 20px;
+  }
+  .subject-list{
+    padding-top: 20px;
+  }
+  .subject-list p{
+    font-family: sans-serif;
+    padding: 5px;
+    cursor: pointer;
+  }

@@ -1,0 +1,16 @@
+.pagination{
+    width: 100%;
+    padding: 10px 0;
+}
+.pagination button{
+    margin-right: 20px;
+    padding: 10px 20px;
+    border:none;
+    background-color: blueviolet;
+    color: white;
+    border-radius: 7px;
+    cursor: pointer;
+}
+button:disabled{
+    opacity: 50%;
+}
