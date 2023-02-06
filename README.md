@@ -2,29 +2,29 @@
 
 This is a web-based Library app that allows you to search for books and view popular subjects.
 
-### Prerequisites
+## Prerequisites
 Before you begin, make sure you have the following software installed on your machine:
 
-# `Node.js`
-# `npm (Node Package Manager)`
+`Node.js`
+ `npm (Node Package Manager)`
 
-### Installation
+## Installation
 To run this project locally, follow these steps:
 
 Clone the repository to your local machine:
-# `git clone https://github.com/<your-username>/library-app.git`
+`git clone https://github.com/<your-username>/library-app.git`
  
  Navigate to the project directory:
-# `cd library-app`
+`cd library-app`
 
 Install the required dependencies using npm:
-# `npm install`
+`npm install`
 Start the development server:
-# `npm start`
+`npm start`
 
 `Open your web browser and navigate to http://localhost:3000/. You should now see the Library app in your browser.`
 
-### Usage
+## Usage
 `Use the search box to search for books by title or author name.`
 `Click on a popular subject to see the top 10 books in that subject.`
 
