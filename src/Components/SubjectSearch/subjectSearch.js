@@ -3,7 +3,7 @@ import Loading from "../loading";
 import "./SubjectSearch.css";
 
 const SubjectSearch = () => {
-    const [subject, setSubject] = useState("");
+    const [subject, setSubject] = useState("javascript");
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const [loading, setLoading] = useState(false);
