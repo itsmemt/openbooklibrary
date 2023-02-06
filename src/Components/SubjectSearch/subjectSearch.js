@@ -1,34 +1,88 @@
-import { useState} from 'react';
-const SubjectSearch = () =>{
-    // console.log(props.subject)
-  const [loading, setLoading] = useState(false);
-  const url=`https://openlibrary.org/subjects/javascript.json?limit=10`;
-// import "./BookDetails.css";
-// import BookLists from "../BookLists/bookLists";
-// import Pagination from "../Pagination/pagination";
-//   const [searchText, setSearchText] = useState("");
-//   const [searchResults, setSearchResults] = useState([]);
-//   const [offset, setOffset] = useState(0);
-    const fetchData = async () => {
-      setLoading(true);
-      const response = await fetch(url);
-      const data = await response.json();
-    //   setSearchResults(data);
-    console.log(data)
-      setLoading(false);
+import React, { useState, useEffect } from "react";
+import Loading from "../loading";
+import "./SubjectSearch.css";
+
+const SubjectSearch = () => {
+    const [subject, setSubject] = useState("");
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchResults, setSearchResults] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const handleEnter = (event) => {
+      if (event.key === "Enter") {
+        setSubject(event.target.value);
+      }
     };
-    const clickHandler=()=>{
-    fetchData();
-}
-  return (
-    <div className="container">
-     <div>
-        <h4 onClick={clickHandler}>Subject</h4>
-     </div>
-      {loading && <div className="loading">Loading...</div>}
-    {/* <BookLists bookData={searchResults} offset={offset}/> */}
-    {/* <Pagination totalNoOfData={searchResults.length} offset={offset} setOffset={setOffset}/> */}
-    </div> 
-  );
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        setLoading(true);
+        const response = await fetch(
+          `https://openlibrary.org/subjects/${subject}.json?limit=10`
+        );
+        const data = await response.json();
+        setSearchResults(data.works);
+        setLoading(false);
+      };
+      if (subject) {
+        fetchData();
+      }
+    }, [subject]);
+  
+    return (
+      <div>
+        <div className="main-container">
+          <div className="subject-section">
+            <h3>Trending Subjects</h3>
+            <input
+              className="searchbox"
+              type="search"
+              placeholder="search by subject"
+              onChange={(event) => setSearchTerm(event.target.value)}
+              onKeyPress={handleEnter}
+            />
+            <div className="subject-list">
+              <p onClick={() => setSubject("computer")}>Computer Science</p>
+              <p onClick={() => setSubject("javascript")}>Javascript</p>
+              <p onClick={() => setSubject("science")}>Science</p>
+              <p onClick={() => setSubject("history")}>History</p>
+              <p onClick={() => setSubject("law")}>Criminal Law</p>
+            </div>
+          </div>
+          <div className="booklist">
+            <h3 className="heading">
+              Top 10 Books of {subject.charAt(0).toUpperCase() + subject.slice(1)}
+            </h3>
+            {loading && <Loading />}
+            {searchResults.length === 0 ? (
+              <p>No results found</p>
+            ) : (
+              <table>
+                <thead>
+                  <tr>
+                    <th>Title & Sub Title</th>
+                    <th>Author</th>
+                    <th>First Publish Year</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {searchResults.map(
+                    (book) =>
+                      book.title.toLowerCase().includes(searchTerm.toLowerCase()) && (
+                        <tr key={book.key}>
+                          <td>{book.title}</td>
+                          <td>{book.authors[0].name}</td>
+                          <td>{book.first_publish_year}</td>
+                        </tr>
+                      )
+                  )}
+                </tbody>
+              </table>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  
 };
+
 export default SubjectSearch;

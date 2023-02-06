@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import "./BookDetails.css";
 import BookLists from "../BookLists/bookLists";
 import Pagination from "../Pagination/pagination";
+import Loading from "../loading";
 const BookDetails = () => {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -41,7 +42,7 @@ const BookDetails = () => {
       />
       <img className="search-icon" src="https://tse1.mm.bing.net/th?id=OIP.ktxAu_6vg1RhQ3hkV-A83QHaHa&pid=Api&rs=1&c=1&qlt=95&w=121&h=121" alt="Search Icon" height="45" onClick={handleClick} />
       </div>
-      {loading && <div className="loading">Loading...</div>}
+      {loading && <Loading/>}
     <BookLists bookData={searchResults} offset={offset}/>
     <Pagination totalNoOfData={searchResults.length} offset={offset} setOffset={setOffset}/>
     </div> 
