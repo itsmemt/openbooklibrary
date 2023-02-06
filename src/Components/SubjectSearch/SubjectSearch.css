@@ -9,3 +9,8 @@
     background-color: blueviolet;
     color: azure;
 }
+.subject-section button{
+    display: block;
+    margin-bottom: 20px;
+    text-decoration: none;
+}

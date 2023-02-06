@@ -1,7 +1,6 @@
 .main-container{
   min-height: 82vh;
   display: flex;
-  flex-wrap: wrap;
 }
 .searchbox{
     background-color: #dddddd;

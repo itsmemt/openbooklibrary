@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Loading from "../loading";
 import "./SubjectSearch.css";
+import { Link } from "react-router-dom";
 
 const SubjectSearch = () => {
     const [subject, setSubject] = useState("javascript");
@@ -33,6 +34,7 @@ const SubjectSearch = () => {
         <div className="main-container">
           <div className="subject-section">
             <h3>Trending Subjects</h3>
+            <Link to="/"><button className="btn">Click Here to Search By title or author</button></Link>
             <input
               className="searchbox"
               type="search"
